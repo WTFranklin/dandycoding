@@ -1,0 +1,44 @@
+body {
+    padding-top: 50px;
+}
+.canvas {
+    padding: 40px 15px;
+    text-align: center;
+    border: 1px dotted black;
+    height: auto;
+}
+
+
+/*** Menu Styles ***/
+.menu {
+    position: absolute;
+    top: 120px;
+    left: 55px;
+    width: 160px;
+    background-color: #3da1ed;
+    color: #efefef;
+    font-size: 120%;
+    border-radius: 0px 0px 25px 25px;
+    -moz-border-radius: 25px 25px 25px 25px;
+    -webkit-border-radius: 25px 25px 25px 25px;
+}
+
+.menu ul li {
+    list-style-type: none;
+}
+
+.panel-body {
+    color: #999;
+}
+
+#accordion {
+    padding: 20px 10px;
+}
+
+#menuHeader {
+    background-color: #333;
+    cursor: move;
+    text-align: center;
+}
+
+/*** /Menu Styles ***/
