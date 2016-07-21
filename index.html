@@ -14,9 +14,6 @@
     <!-- Bootstrap core CSS -->
     <link href="css/bootstrap.min.css" rel="stylesheet">
 
-    <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
-    <link href="css/ie10-viewport-bug-workaround.css" rel="stylesheet">
-
     <!-- Custom styles for this template -->
     <link href="css/styles.css" rel="stylesheet" type="text/css">
 
@@ -24,12 +21,8 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
     <script src="js/bootstrap.min.js"></script>
     <script src="js/jquery-ui.min.js"></script>
-    
-    <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
-    <script src="js/ie10-viewport-bug-workaround.js"></script>
-    
     <script src="js/menu.js" type="text/javascript"></script>
-    
+
     <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
     <!--[if lt IE 9]>
       <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
@@ -117,14 +110,45 @@
           </div>
         </div>
       </div>
-      
+
       <!-- /item menu -->
 
-      <div class="canvas">
-        Stuff gets dragged here
-      </div>
+    </div>
 
-    </div><!-- /.container -->
-    
-  </body>
+    <div id="files">
+
+      <ul id="open-files" class="nav nav-tabs">
+        <li role="presentation" class="active"><a href="#">Home</a></li>
+        <li role="presentation"><a href="#">Profile</a></li>
+        <li role="presentation"><a href="#">Messages</a></li>
+      </ul>
+
+      <div id="canvas" class="canvas">
+        <p>Stuff gets dragged here</p>
+      </div>
+    </div>
+
+  </div><!-- /.container -->
+
+  <!-- Modal -->
+  <div class="modal fade" id="addVariable" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+          <h4 class="modal-title" id="myModalLabel">Add <span id="varType"></span></h4>
+        </div>
+        <div class="modal-body">
+          <p><label for="varName">Enter variable name </label>&nbsp;&nbsp;<input type="text" id="varName" name="varName"></p>
+          <p><label for="varValue">Enter value: </label>&nbsp;&nbsp;<input type="text" id="varValue" name="varValue"></p>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
+          <button type="button" id="submit" class="btn btn-primary">Add Variable</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</body>
 </html>

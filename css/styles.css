@@ -1,6 +1,7 @@
 body {
     padding-top: 50px;
 }
+
 .canvas {
     padding: 40px 15px;
     text-align: center;
@@ -8,10 +9,46 @@ body {
     height: auto;
 }
 
+#files {
+    margin: 0 auto;
+}
+
+/*** icons ***/
+
+.var-icon {
+    border: 1px solid #333;
+    background: #efefef;
+    width: 150px;
+}
+
+.var-icon .icon-header {
+    text-align: right;
+    display: none;
+    float: right;
+}
+
+.var-icon .icon-header .remove-icon {
+    cursor: pointer;
+}
+
+.var-data-type {
+    color: #337ab7;
+}
+
+/*** /icons ***/
+
+/*** Open Files Styles ***/
+
+#open-files {
+    margin: 50px 0 0 0;
+}
+
+/*** /Open Files Styles ***/
 
 /*** Menu Styles ***/
 .menu {
     position: absolute;
+    z-index: 1000;
     top: 120px;
     left: 55px;
     width: 160px;
