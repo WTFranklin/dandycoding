@@ -104,7 +104,6 @@ function init()
 
 function addVariable(dataType, varName, value)
 {
-    
     var variable = '<div class="var-icon">';
         variable += '<div class="btn-group icon-header">';
         variable += '<span class="glyphicon glyphicon-option-vertical btn dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"></span>';
@@ -121,6 +120,11 @@ function addVariable(dataType, varName, value)
         variable += '</div>';
     
     $("#canvas").append(variable);
+    
+    //clean up form
+    
+    $("#varName").val('');
+    $("#varValue").val('');
     
     $("#addVariable").modal('hide');
     
