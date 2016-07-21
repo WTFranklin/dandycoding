@@ -80,35 +80,26 @@ function init()
        var varName = $("#varName").val().trim();
        var value = $("#varValue").val().trim();
        
-       switch(dataType)
-       {
-            case "byte":
-               //validate byte
-               break;
-            case "boolean":
-               
-               if(value !== "true" && value !== "false") {
-                   alert("Invalid value for this type!");
-                   return;
-               }
-               break;
-           case "char":
-               if(value.length > 1) {
-                   alert("Value too long for char variable!");
-                   return;
-               }
-               break;
-           
-       } //switch
+       var isValid = validate(dataType, varName, value);
        
-       addVariable(dataType, varName, value);
+       if(isValid)
+       {
+           addVariable(dataType, varName, value);
+       }
     });
     
     $('#editVariable .submit').click(function(){
        //validate data going into this variable
+       var dataType = $("#varType").html();
        var varName = $("#editVarName").val().trim();
        var value = $("#editVarValue").val().trim();
-       editVariable(varName, value);
+       
+       var isValid = validate(dataType, varName, value);
+       
+       if(isValid)
+       {
+           editVariable(varName, value);
+       }
     });
     
 }//init()
@@ -166,6 +157,32 @@ function editVariable(varName, varValue)
     oldName = varName;
     
 } //editVariable()
+
+function validate(dataType, varName, value)
+{
+    switch(dataType)
+       {
+            case "byte":
+               //validate byte
+               break;
+            case "boolean":
+               
+               if(value !== "true" && value !== "false") {
+                   alert("Invalid value for this type!");
+                   return false;
+               }
+               break;
+           case "char":
+               if(value.length > 1) {
+                   alert("Value too long for char variable!");
+                   return false;
+               }
+               break;
+           
+       } //switch
+       
+    return true;
+}
 
 function initializeVariableIcon()
 {
