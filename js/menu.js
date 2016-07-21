@@ -79,7 +79,6 @@ function init()
        var dataType = $("#varType").html();
        var varName = $("#varName").val().trim();
        var value = $("#varValue").val().trim();
-       
        var isValid = validate(dataType, varName, value);
        
        if(isValid)
@@ -93,7 +92,6 @@ function init()
        var dataType = $("#varType").html();
        var varName = $("#editVarName").val().trim();
        var value = $("#editVarValue").val().trim();
-       
        var isValid = validate(dataType, varName, value);
        
        if(isValid)
@@ -112,8 +110,10 @@ function addVariable(dataType, varName, value)
     $("#varName").val('');
     $("#varValue").val('');
     
+    //hide modal
     $("#addVariable").modal('hide');
     
+    //set up icon
     initializeVariableIcon();
     
 } //addVariable()
@@ -136,7 +136,7 @@ function drawIcon(dataType, varName, value)
         variable += '</div>';
     
     $("#canvas").append(variable);
-}
+} //drawIcon()
 
 function editVariable(varName, varValue)
 {       
@@ -179,7 +179,7 @@ function validate(dataType, varName, value)
        } //switch
        
     return true;
-}
+} //validate()
 
 function initializeVariableIcon()
 {
