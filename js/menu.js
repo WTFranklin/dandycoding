@@ -139,10 +139,7 @@ function drawIcon(dataType, varName, value)
 }
 
 function editVariable(varName, varValue)
-{   
-    clog(varName);
-    clog(varValue);
-    
+{       
     //close modal
     $('#editVariable').modal('hide');
     
