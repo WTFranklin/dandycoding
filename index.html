@@ -130,7 +130,7 @@
 
   </div><!-- /.container -->
 
-  <!-- Modal -->
+  <!-- Add Variable Modal -->
   <div class="modal fade" id="addVariable" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
     <div class="modal-dialog" role="document">
       <div class="modal-content">
@@ -144,7 +144,27 @@
         </div>
         <div class="modal-footer">
           <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
-          <button type="button" id="submit" class="btn btn-primary">Add Variable</button>
+          <button type="button" class="btn btn-primary submit">Add Variable</button>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+  <!-- Edit Variable Modal -->
+  <div class="modal fade" id="editVariable" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+          <h4 class="modal-title" id="myModalLabel">Edit <span id="editVarLabel"></span></h4>
+        </div>
+        <div class="modal-body">
+          <p><label for="varName">Enter variable name </label>&nbsp;&nbsp;<input type="text" id="editVarName" name="varName"></p>
+          <p><label for="varValue">Enter value: </label>&nbsp;&nbsp;<input type="text" id="editVarValue" name="varValue"></p>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
+          <button type="button" class="btn btn-primary submit">Edit Variable</button>
         </div>
       </div>
     </div>

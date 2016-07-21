@@ -4,6 +4,8 @@
  * needed for the interface
  */
 
+var oldName;
+
 $(function () {
     init();
 });
@@ -72,7 +74,7 @@ function init()
         }
     });
     
-    $('#addVariable #submit').click(function(){
+    $('#addVariable .submit').click(function(){
        //validate data going into this variable
        var dataType = $("#varType").html();
        var varName = $("#varName").val().trim();
@@ -80,51 +82,90 @@ function init()
        
        switch(dataType)
        {
-           case "byte":
+            case "byte":
                //validate byte
                break;
-           case "boolean":
+            case "boolean":
                
                if(value !== "true" && value !== "false") {
                    alert("Invalid value for this type!");
                    return;
                }
-               
-               addVariable(dataType, varName, value);
                break;
-       }
+           case "char":
+               if(value.length > 1) {
+                   alert("Value too long for char variable!");
+                   return;
+               }
+               break;
+           
+       } //switch
+       
+       addVariable(dataType, varName, value);
+    });
+    
+    $('#editVariable .submit').click(function(){
+       //validate data going into this variable
+       var varName = $("#editVarName").val().trim();
+       var value = $("#editVarValue").val().trim();
+       editVariable(varName, value);
     });
     
 }//init()
 
 function addVariable(dataType, varName, value)
 {
-    var variable = '<div class="var-icon">';
-        variable += '<div class="btn-group icon-header">';
-        variable += '<span class="glyphicon glyphicon-option-vertical btn dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"></span>';
-        variable += '<ul class="dropdown-menu">';
-        variable += '<li><a href="#">Edit <span class="glyphicon glyphicon-pencil"></span></a></li>'
-        variable += '<li role="separator" class="divider"></li>';
-        variable += '<li><a href="#"><span class="remove-icon">Remove Variable</span>&nbsp;<span class="glyphicon glyphicon-remove remove-icon"></span></a></li>';
-        variable += '</ul>';
-        variable += '</div>';
-        variable += '<div class="var-name">';
-        variable += '<span class="var-data-type">' + dataType + '</span> <span class="var-name">' + varName + '</span>';
-        variable += '</div>';
-        variable += '<div class="var-value">' + value + '</div>';
-        variable += '</div>';
-    
-    $("#canvas").append(variable);
+    drawIcon(dataType, varName, value);
     
     //clean up form
-    
     $("#varName").val('');
     $("#varValue").val('');
     
     $("#addVariable").modal('hide');
     
     initializeVariableIcon();
+    
 } //addVariable()
+
+function drawIcon(dataType, varName, value)
+{
+    var variable  = '<div id="' + varName +'" class="var-icon">';
+        variable += '<div class="btn-group icon-header">';
+        variable += '<span class="glyphicon glyphicon-option-vertical btn dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"></span>';
+        variable += '<ul class="dropdown-menu">';
+        variable += '<li><a href="#"><span class="editVar">Edit</span> <span class="glyphicon glyphicon-pencil editVar"></span></a></li>';
+        variable += '<li role="separator" class="divider"></li>';
+        variable += '<li><a href="#"><span class="remove-icon">Remove Variable</span>&nbsp;<span class="glyphicon glyphicon-remove remove-icon"></span></a></li>';
+        variable += '</ul>';
+        variable += '</div>';
+        variable += '<div class="variable">';
+        variable += '<span class="var-data-type">' + dataType + '</span> <span class="var-name">' + varName + '</span>';
+        variable += '</div>';
+        variable += '<div class="var-value">' + value + '</div>';
+        variable += '</div>';
+    
+    $("#canvas").append(variable);
+}
+
+function editVariable(varName, varValue)
+{   
+    clog(varName);
+    clog(varValue);
+    
+    //close modal
+    $('#editVariable').modal('hide');
+    
+    //update data
+    $('#' + oldName + ' .var-name').html(varName);
+    $('#' + oldName + ' .var-value').html(varValue);
+    
+    //update ID for this variable icon!
+    $('#' + oldName).attr('id', varName);
+    
+    //update oldName to new current name!
+    oldName = varName;
+    
+} //editVariable()
 
 function initializeVariableIcon()
 {
@@ -140,6 +181,26 @@ function initializeVariableIcon()
      */
     $('.var-icon').mouseout(function(){
        $('.icon-header').css('display', 'none');
+    });
+    
+    /*
+     * Edit variable
+     */
+    $('.editVar').click(function(){
+        //store current name into 'oldName', just in case we need to use it for editing
+        oldName = $(this).closest('.var-icon').find('.var-name').html();
+        
+        //show modal with this variable's information to edit
+        var varName = $(this).closest('.var-icon').find('.var-name').html();
+        var varValue = $(this).closest('.var-icon').find('.var-value').html();
+        
+        //launch modal
+        $("#editVariable").modal();
+        
+        //pre-fill form with current data
+        $('#editVarLabel').html(varName);
+        $('#editVarName').val(varName);
+        $('#editVarValue').val(varValue);        
     });
     
     /*
