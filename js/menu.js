@@ -79,7 +79,7 @@ function init()
        var dataType = $("#varType").html();
        var varName = $("#varName").val().trim();
        var value = $("#varValue").val().trim();
-       var isValid = validate(dataType, varName, value);
+       var isValid = validate(dataType, value);
        
        if(isValid)
        {
@@ -92,7 +92,7 @@ function init()
        var dataType = $("#varType").html();
        var varName = $("#editVarName").val().trim();
        var value = $("#editVarValue").val().trim();
-       var isValid = validate(dataType, varName, value);
+       var isValid = validate(dataType, value);
        
        if(isValid)
        {
@@ -155,7 +155,7 @@ function editVariable(varName, varValue)
     
 } //editVariable()
 
-function validate(dataType, varName, value)
+function validate(dataType, value)
 {
     switch(dataType)
        {
