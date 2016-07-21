@@ -78,23 +78,18 @@ function init()
        var varName = $("#varName").val().trim();
        var value = $("#varValue").val().trim();
        
-       clog("before switch");
-       clog("dataType: " + dataType);
-       clog("varName: " + varName);
-       clog("value: " + value);
-       
        switch(dataType)
        {
            case "byte":
                //validate byte
                break;
            case "boolean":
-               clog("in boolean");
+               
                if(value !== "true" && value !== "false") {
                    alert("Invalid value for this type!");
                    return;
                }
-               clog("after validation");
+               
                addVariable(dataType, varName, value);
                break;
        }
