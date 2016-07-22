@@ -56,6 +56,11 @@ function init()
     $('.datatype').mousedown(function () {
         //make a copy of the element
         //drag this copied element onto canvas while leaving the original behind
+        $(this).css('cursor', 'grabbing');
+    });
+    
+    $('.datatype').mouseup(function(){
+       $(this).css('cursor', 'grab');
     });
 
     /*

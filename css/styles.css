@@ -68,6 +68,10 @@ body {
     color: #999;
 }
 
+.datatype {
+    cursor: grab;
+}
+
 #accordion {
     padding: 20px 10px;
 }
